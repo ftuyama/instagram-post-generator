@@ -32,6 +32,10 @@ Publishing the post on Instagram:
 make publish
 ```
 
+## Example
+
+![Example image](example.png "Example of AI generated post")
+
 ## Advanced
 
 You may also generate a post image based on the generated post content.
