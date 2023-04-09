@@ -28,7 +28,7 @@ def publish():
     ]
 
     # Define post caption
-    caption = "#spirituality #awakenedcat #catwisdom #meditation #mindfulness #spirituality #spiritual #spiritualawakening #enlightenment #meditation #mindfulness #yoga #consciousness #higherconsciousness #awakening #selflove #selfcare #peace #love #innerpeace #gratitude #healing #soul #universalconsciousness #mindbodysoul #mindbodyspirit #chakras #energyhealing #positivevibes #positivity #wisdom #transformation #universe #oneness"
+    caption = "#spirituality #awakenedcat #spiritual #spiritualawakening #enlightenment #meditation #mindfulness #consciousness #higherconsciousness #awakening #selflove #peace #love #innerpeace #gratitude #healing #soul #universalconsciousness #mindbodysoul #mindbodyspirit #chakras #energyhealing #positivevibes #positivity #wisdom #transformation #universe #oneness"
 
     # Upload the photo
     api.post_album(medias, caption=caption)

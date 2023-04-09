@@ -31,3 +31,19 @@ Publishing the post on Instagram:
 ```bash
 make publish
 ```
+
+## Advanced
+
+You may also generate a post image based on the generated post content.
+
+For that, setup your OPENAI token:
+
+```bash
+OPENAI_TOKEN="..."
+```
+
+Then run:
+
+```bash
+make image
+```

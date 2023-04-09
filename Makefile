@@ -4,7 +4,10 @@ install:
 publish:
 	python3 app.py publish
 
+image:
+	python3 app.py image
+
 run:
 	python3 app.py
 
-.PHONY: install run publish
+.PHONY: install run publish image

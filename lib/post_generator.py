@@ -1,6 +1,6 @@
 import os
 import textwrap
-from lib.utils import post_page
+from lib.utils import post_page, post_image
 from PIL import Image, ImageDraw, ImageFont
 
 TITLE_FONT = "assets/RobotoSerif-Bold.ttf"
@@ -11,6 +11,11 @@ TEXT_FONT = "assets/RobotoSerif-Regular.ttf"
 TEXT_SIZE = 50
 TEXT_COLOR = "#A780E7"
 TEXT_OFFSET = 275
+
+CAPTION_FONT = "assets/RobotoSerif-Bold.ttf"
+CAPTION_SIZE = 72
+CAPTION_COLOR = "#FFF"
+CAPTION_STROKE = "#000"
 
 POST_PICTURES = [
     'assets/begin.png',
@@ -66,6 +71,18 @@ def draw_text(image, draw, text, offset):
         draw.text((200, offset), line, font=font, fill=TEXT_COLOR)
         offset += line_height + 12
 
+def draw_caption_text(image, draw, text):
+    font = ImageFont.truetype(CAPTION_FONT, CAPTION_SIZE)
+
+    image_width, image_height = image.size
+    lines = textwrap.wrap(text, width=24)
+    total_size = sum(font.getsize(line)[1] for line in lines)
+    offset = 1000 - total_size - CAPTION_SIZE
+
+    for line in lines:
+        line_width, line_height = font.getsize(line)
+        draw.text((20, offset), line, font=font, fill=CAPTION_COLOR, stroke_width=10, stroke_fill=CAPTION_STROKE)
+        offset += line_height + 12
 
 def generate_post(post_title, post_subtitle, text):
     for index, picture in enumerate(POST_PICTURES):
@@ -83,3 +100,16 @@ def generate_post(post_title, post_subtitle, text):
 
         # Save the modified image
         image.save(post_page(index + 1))
+
+
+def generate_image_post(text):
+    # Load the image
+    image = Image.open(post_image())
+
+    # Create a drawing context
+    draw = ImageDraw.Draw(image)
+
+    draw_caption_text(image, draw, text)
+
+    # Save the modified image
+    image.save(post_image(final=True))

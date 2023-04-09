@@ -1,3 +1,4 @@
 .env
 posts/*
 assets/*.png
+*/__pycache__/
