@@ -4,10 +4,10 @@ install:
 publish:
 	python3 app.py publish
 
-image:
-	python3 app.py image
+template:
+	python3 app.py template
 
 run:
 	python3 app.py
 
-.PHONY: install run publish image
+.PHONY: install run publish template

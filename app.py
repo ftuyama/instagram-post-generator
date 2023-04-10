@@ -1,5 +1,6 @@
 import os
 import sys
+from dotenv import load_dotenv
 from lib.content import generate_content, guess_title
 from lib.instagram import publish
 from lib.image_generator import generate_image
@@ -37,16 +38,17 @@ if __name__ == '__main__':
     if params == "publish":
         print("Publishing post on Instagram")
         publish()
-    elif params == "image":
-        [post_title, post_subtitle, post_text] = generate_post_content()
-
-        print("Generating image for post")
-        generate_image(f"Cosmic spiritual {post_title} {post_subtitle}")
-
-        print("Generating Instagram post")
-        generate_image_post(post_text)
-    else:
+    elif params == "template":
         [post_title, post_subtitle, post_text] = generate_post_content()
 
         print("Generating Instagram post")
         generate_post(post_title, post_subtitle, post_text)
+    else:
+        [post_title, post_subtitle, post_text] = generate_post_content()
+
+        image_flavour = os.environ.get('IMAGE_FLAVOUR') or "Cosmic spiritual"
+        print(f"Generating {image_flavour} image for post")
+        generate_image(f"{image_flavour} {post_title} {post_subtitle}")
+
+        print("Generating Instagram post")
+        generate_image_post(post_text)

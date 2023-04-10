@@ -9,6 +9,8 @@ Create a .env file with this content:
 ```bash
 INSTAGRAM_USERNAME='yourusername'
 INSTAGRAM_PASSWORD='password'
+OPENAI_TOKEN="..." # Optional, for image generation
+IMAGE_FLAVOUR="Cosmic spiritual" # Optional, param used to generate OpenAI image
 ```
 
 Install project
@@ -20,7 +22,7 @@ make install
 
 ## How to use
 
-Creating the Instagram Post:
+Creating the Instagram Post (it will generate an image with OpenAI + fetch a random quote from internet):
 
 ```bash
 make run
@@ -38,16 +40,10 @@ make publish
 
 ## Advanced
 
-You may also generate a post image based on the generated post content.
-
-For that, setup your OPENAI token:
+You may also generate a post using a pre-defined template.
 
 ```bash
-OPENAI_TOKEN="..."
+make template
 ```
 
-Then run:
-
-```bash
-make image
-```
+For that, you need to setup in `assets/` folder three images: `begin.png`, `middle.png` and `end.png`
